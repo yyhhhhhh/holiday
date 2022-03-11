@@ -626,7 +626,7 @@
                                                     <div class="mint-cell-left"></div>
                                                     <div class="mint-cell-wrapper mt-bColor-grey-lv5 mint-cell-no-bottom-line"
                                                         style="padding-right: 20px;">
-                                                        <div class="mint-cell-title"
+                                                        <div @click="changeAddress" class="mint-cell-title"
                                                             style="flex: 1 1 96px; min-width: 96px;">
                                                             <!---->
                                                             <!----><span
@@ -635,7 +635,9 @@
                                                         </div>
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
-                                                            <span class="mt-color-grey-lv3 mt-cell-diy-span">医院复查</span>
+                                                            <span class="mt-color-grey-lv3 mt-cell-diy-span">
+                                                                {{ collection[d_index].reason }}
+                                                            </span>
                                                         </div>
                                                         <!---->
                                                     </div>
@@ -978,7 +980,8 @@
                                                         </div>
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
-                                                            <div class="em-select-value mt-color-grey-lv3">江苏省/南京市/仙林区
+                                                            <div class="em-select-value mt-color-grey-lv3">
+                                                                {{ collection[d_index].address }}
                                                             </div>
                                                         </div>
                                                         <!---->
@@ -1004,7 +1007,8 @@
                                                         </div>
                                                         <div class="mint-cell-value mt-color-grey-lv3"
                                                             style="flex: 1 1 calc(100% - 96px); justify-content: normal;">
-                                                            <div class="em-select-value mt-color-grey-lv3">南京仙林区泰康医院
+                                                            <div class="em-select-value mt-color-grey-lv3">
+                                                                {{ collection[d_index].detail }}
                                                             </div>
                                                         </div>
                                                         <!---->
@@ -1207,13 +1211,39 @@
                 year: new Date().getFullYear(),
                 month: new Date().getMonth() + 1,
                 day: new Date().getDate(),
+                collection: [
+                    {
+                        address: '江苏省/南京市/仙林区',
+                        detail: '南京仙林区泰康医院',
+                        reason: '医院复查'
+                    },
+                    {
+                        address: '江苏省/南京市/秦淮区',
+                        detail: '光华路将军唐天堂校区',
+                        reason: '回家拿当季衣服'
+                    },
+                    {
+                        address: '江苏省/南京市/鼓楼区',
+                        detail: '南京鼓楼区百脑汇',
+                        reason: '修电脑'
+                    },
+                    {
+                        address: '乌克兰/基辅',
+                        detail: '基辅',
+                        reason: '支援俄罗斯'
+                    },
+                ],
+                d_index: 0
             },
             methods: {
                 changeStudent: function (student) {
                     this.index++;
                     this.index %= this.students.length;
                     localStorage.setItem("index", this.index);
-                }
+                },
+                changeAddress: function (index) {
+                    this.d_index++;
+                },
             }
         })
     </script>
