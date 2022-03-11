@@ -1233,7 +1233,7 @@
                         reason: '支援俄罗斯'
                     },
                 ],
-                d_index: 0
+                d_index: localStorage.getItem("d_index") || 0
             },
             methods: {
                 changeStudent: function (student) {
@@ -1243,6 +1243,8 @@
                 },
                 changeAddress: function (index) {
                     this.d_index++;
+                    this.d_index %= this.collection.length;
+                    localStorage.setItem("d_index", this.d_index);
                 },
             }
         })
