@@ -1178,20 +1178,32 @@
                 }, {
                     id: "210501110123",
                     name: "杨宇航"
-                },{
-                    id : "210501110117",
+                }, {
+                    id: "210501110121",
+                    name: "张洋"
+                }, {
+                    id: "210501110137",
+                    name: "谢永诚"
+                }, {
+                    id: "210501110131",
+                    name: "顾勇江"
+                }, {
+                    id: "210501110127",
+                    name: "沈建树"
+                }, {
+                    id: "210501110117",
                     name: "何新宇"
-                },{
-                    id : "210501110108",
+                }, {
+                    id: "210501110108",
                     name: "王浩"
-                },{
-                    id : "210501110133",
+                }, {
+                    id: "210501110133",
                     name: "高维祎"
-                },{
-                    id : "210501110116",
+                }, {
+                    id: "210501110116",
                     name: "严晓桐"
                 }],
-                index: 0,
+                index: localStorage.getItem("index") || 0,
                 year: new Date().getFullYear(),
                 month: new Date().getMonth() + 1,
                 day: new Date().getDate(),
@@ -1199,6 +1211,8 @@
             methods: {
                 changeStudent: function (student) {
                     this.index++;
+                    this.index %= this.students.length;
+                    localStorage.setItem("index", this.index);
                 }
             }
         })
